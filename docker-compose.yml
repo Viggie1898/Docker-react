@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Name of the service (backend)
+  docker:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+     # Build the image from the current directory (.)
+    ports:
+      - "2000:2000"  # Map container port 3000 to host port 3000
+    volumes:
+      - ./:/app  
+
+  # Name of the service (database)
+  database:
+    image: mysql:8.0  # Use the official MySQL image
+
+# Define volumes to persist data (optional)
+# volumes:
+#   mysql-data:  # Name of the volume
+
+# Link services (optional for communication between services)
+# networks:
+#   my-network:
+#     external: true
+
